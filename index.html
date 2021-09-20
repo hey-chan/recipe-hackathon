@@ -10,7 +10,7 @@
       integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l'
       crossorigin='anonymous'
     />
-    <title>Food Hack</title>
+    <title>Food Hacks</title>
   </head>
   <body>
     <div class='container container-fluid d-flex'>
@@ -27,12 +27,14 @@
             <button class='btn btn-outline-success' type='submit'>Search</button>
           </form>
         </div>
-        <div class='meal-type'>
+        <br>
+        <div class='meal-type mb-4'>
           <div class='dropdown'>
+            <h5>Meal types</h5>
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Meal Type
+              Select
             </button>
-            <div class="meal-dropdown" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href='#'>Breakfast</a>
               <a class="dropdown-item" href='#'>Lunch</a>
               <a class="dropdown-item" href='#'>Dinner</a>
@@ -41,13 +43,14 @@
             </div>
           </div>  <!-- close dropdown -->
         </div>  <!-- close meal type -->
-        
-        <div class='cuisine-type'>
+   
+        <div class='cuisine-type mb-4'>
+          <h5>Cuisines</h5>
           <div class='dropdown'>
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Cuisine
+              Select
             </button>
-            <div class="cuisine-dropdown" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href='#'>American</a>
               <a class="dropdown-item" href='#'>Asian</a>
               <a class="dropdown-item" href='#'>British</a>
@@ -67,9 +70,17 @@
             </div>
           </div> <!-- close dropdown -->
         </div> <!-- close cuisine type -->        
+        <!-- MATT CODE DOWN BELOW -->
+      
+        <div>
+          <h5>Diet types</h5>
+          <button type="button" class="btn btn-info mb-2">Gluten free</button>
+          <button type="button" class="btn btn-info mb-2">Low fat</button>
+          <button type="button" class="btn btn-info mb-2">Paleo</button>
+          <button type="button" class="btn btn-info mb-2">Vegan</button>
+          <button type="button" class="btn btn-info mb-2">Vegetarian</button>
+        </div>
       </div>
-
-      <!-- MATT CODE DOWN BELOW -->
 
       <!--  ======================================================================
                                     MAIN SECTION
