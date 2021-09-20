@@ -1,0 +1,21 @@
+{
+  "name": "recipe-hackathon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hey-chan/recipe-hackathon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hey-chan/recipe-hackathon/issues"
+  },
+  "homepage": "https://github.com/hey-chan/recipe-hackathon#readme"
+}
