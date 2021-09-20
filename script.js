@@ -3,6 +3,7 @@ const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const mealTime = document.getElementById('meal-time');
 const cuisineType = document.getElementById('cuisine-type');
+
 for (let i = 0; i < 6; i++) {
     const checkbox
 }
@@ -57,4 +58,30 @@ function getMealList(event){
 
         mealList.innerHTML = html;
     });
+}
+
+
+
+function mealTimeQuerySelector(mealTime) {
+  let mealQuery;
+  switch(mealTime.value) {
+    case 1:
+      mealQuery = 'Breakfast';
+      break;
+    case 2:
+      mealQuery = 'Lunch';
+      break;
+    case 3:
+      mealQuery = 'Dinner';
+      break;
+    case 4:
+      mealQuery = 'Snack';
+      break;
+    case 5:
+      mealQuery = 'Teatime';
+      break;
+    default:
+      mealQuery = '';
+  }
+  return mealQuery;
 }
