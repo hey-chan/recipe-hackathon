@@ -1,43 +1,61 @@
-const searchBtn = document.getElementById('recipe-search');
-let mealList = document.getElementById('meal');
-let mealDetailsContent = document.querySelector('.meal-details-content');
-let mealTime = document.getElementById('meal-time');
-let cuisineType = document.getElementById('cuisine-type');
+const searchBtn = document.getElementById("recipe-search");
+let mealList = document.getElementById("meal");
+let mealDetailsContent = document.querySelector(".meal-details-content");
+const findRecipesButton = document.getElementById("find-recipes");
+
+// API request URL sections
+const baseURL = "https://api.edamam.com/search?";
+const APP_ID = "3e505aa4";
+const appID = `app_id=${APP_ID}`;
+const API_KEY = "45522e7d11757a45d7cbc588999ef9c3";
+const appKey = `&app_key=${API_KEY}`;
 
 for (let i = 0; i < 6; i++) {
-    // const checkbox`${i}` = document.getElementById(`check${i}`);
+  // const checkbox`${i}` = document.getElementById(`check${i}`);
 }
 
 // event listeners
-searchBtn.addEventListener('submit', getMealList);
-
+searchBtn.addEventListener("submit", getMealList);
+findRecipesButton.addEventListener("submit", findRecipes);
 
 // get meal list that matches with the ingredients
 async function getMealList(event) {
-    const baseURL = "https://api.edamam.com/search?";
-    const APP_ID = '3e505aa4'
-    const appID = `app_id=${APP_ID}`;
-    const API_KEY = '45522e7d11757a45d7cbc588999ef9c3'
-    const appKey = `&app_key=${API_KEY}`;
-    let searchInputTxt = document.getElementById('search-bar').value.trim();
+  let searchInputTxt = document.getElementById("search-bar").value.trim();
+  let fetchURL = `${baseURL}${appID}${appKey}&q=${searchInputTxt}`;
+  // let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
 
-    let fetchURL = `${baseURL}${appID}${appKey}&q=${searchInputTxt}`;
-    // let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
-    
-    event.preventDefault();
-    let response = await fetch(fetchURL);
-    let data = await response.json()
-    useApiData(data)
+  event.preventDefault();
+  let response = await fetch(fetchURL);
+  let data = await response.json();
+  useApiData(data);
 }
 // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
 
+async function findRecipes(event) {
+  let mealTime = document.getElementById("meal-time");
+  let cuisineType = document.getElementById("cuisine-type");
+  let query = `${mealTime.value}&q=${cuisineType.value}`;
+
+// =====================================================
+//  Do this or should we do each element by ID then use if checkbox/object.checked
+// =====================================================
+  
+  let checkboxes = document.querySelectorAll('form-check-input');
+
+  let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
+  event.preventDefault();
+  let response = await fetch(fetchURL);
+  let data = await response.json();
+  useApiData(data);
+}
+
 function useApiData(data) {
-    console.log(data)
-    let html = "";
-    if (data.hits.length > 0) {
-        data.hits.forEach(({recipe}) => {
-        let dietRequirements = filterHealthLabels(recipe.healthLabels);
-            html += `
+  console.log(data);
+  let html = "";
+  if (data.hits.length > 0) {
+    data.hits.forEach(({ recipe }) => {
+      let dietRequirements = filterHealthLabels(recipe.healthLabels);
+      html += `
         <div class="col mb-4">
           <div class="card h-100">
             <div class="card-body">
@@ -45,7 +63,9 @@ function useApiData(data) {
               <div class='card-details'>
                 <div class='row'> 
                   <span class='col mr-1'>Servings: 👤 ${recipe.yield}</span>
-                  <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(recipe.calories)}</span>
+                  <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(
+                    recipe.calories
+                  )}</span>
                 </div>
                 <div class='row mt-2 mx-auto'>  
                   <span class="col mr-2 badge badge-success"> ${dietRequirements[0]}</span>
@@ -61,119 +81,49 @@ function useApiData(data) {
             </div>  
           </div>
         </div>`;
-        });
-        // <div class='row d-flex flex-direction-row justify-content-between'>
-        mealList.classList.remove('notFound');
-    } else {
-        html = "Sorry, we couldn't find the meal you were looking for.";
-        mealList.classList.add('notFound');
-    }
+    });
+    // <div class='row d-flex flex-direction-row justify-content-between'>
+    mealList.classList.remove("notFound");
+  } else {
+    html = "Sorry, we couldn't find the meal you were looking for.";
+    mealList.classList.add("notFound");
+  }
 
-    mealList.innerHTML = html;
+  mealList.innerHTML = html;
 }
 
 function filterHealthLabels(diets) {
-    console.log(diets);
-    const dietFilters = ['Dairy-Free', 'Gluten-Free', 'Pork-Free', 'Keto-Friendly', 'Tree-Nut-Free', 'Vegan', 'Vegetarian', 'Wheat-Free'];
-    const filteredDiets = diets.filter(word => dietFilters.includes(word));
-    console.log(filteredDiets);
-    return changeWords(filteredDiets);
+  console.log(diets);
+  const dietFilters = [
+    "Dairy-Free",
+    "Gluten-Free",
+    "Pork-Free",
+    "Keto-Friendly",
+    "Tree-Nut-Free",
+    "Vegan",
+    "Vegetarian",
+    "Wheat-Free",
+  ];
+  const filteredDiets = diets.filter((word) => dietFilters.includes(word));
+  console.log(filteredDiets);
+  return changeWords(filteredDiets);
 }
 
 function changeWords(diets) {
-    console.log(`change word diets: ${diets}`);
-    console.log(diets);
-    let badgeOutput = [];
-    diets.forEach((diet) => {
-        if (diet == 'Pork-Free') {
-            badgeOutput.push('Halal');
-        } else if (diet == 'Keto-Friendly') {
-            badgeOutput.push('Keto');
-        } else if (diet == 'Tree-Nut-Free') {
-            badgeOutput.push('Nut-Free');
-        } else {
-            badgeOutput.push(diet);
-        }
-    })
-    console.log(`after: ${badgeOutput}`);
-    return badgeOutput;
-}
-
-
-function mealTimeQuerySelector(mealTime) {
-    let mealQuery;
-    switch (mealTime.value) {
-        case 1:
-            mealQuery = 'Breakfast';
-            break;
-        case 2:
-            mealQuery = 'Lunch';
-            break;
-        case 3:
-            mealQuery = 'Dinner';
-            break;
-        case 4:
-            mealQuery = 'Snack';
-            break;
-        case 5:
-            mealQuery = 'Teatime';
-            break;
-        default:
-            mealQuery = '';
+  console.log(`change word diets: ${diets}`);
+  console.log(diets);
+  let badgeOutput = [];
+  diets.forEach((diet) => {
+    if (diet == "Pork-Free") {
+      badgeOutput.push("Halal");
+    } else if (diet == "Keto-Friendly") {
+      badgeOutput.push("Keto");
+    } else if (diet == "Tree-Nut-Free") {
+      badgeOutput.push("Nut-Free");
+    } else {
+      badgeOutput.push(diet);
     }
-    return mealQuery;
-}
-
-function cuisineQuerySelector(cuisineType) {
-    let cuisineQuery;
-    switch (cuisineType.value) {
-        case 1:
-            cuisineQuery = 'American';
-            break;
-        case 2:
-            cuisineQuery = 'Asian';
-            break;
-        case 3:
-            cuisineQuery = 'British';
-            break;
-        case 4:
-            cuisineQuery = 'Carribean';
-            break;
-        case 5:
-            cuisineQuery = 'Central Europe';
-            break;
-        case 6:
-            cuisineQuery = 'Chinese';
-            break;
-        case 7:
-            cuisineQuery = 'Eastern Europe';
-            break;
-        case 8:
-            cuisineQuery = 'French';
-            break;
-        case 9:
-            cuisineQuery = 'Indian';
-            break;
-        case 10:
-            cuisineQuery = 'Italian';
-            break;
-        case 11:
-            cuisineQuery = 'Japanese';
-            break;
-        case 12:
-            cuisineQuery = 'Mediterranean';
-            break;
-        case 13:
-            cuisineQuery = 'Mexican';
-            break;
-        case 14:
-            cuisineQuery = 'Middle Eastern';
-            break;
-        case 15:
-            cuisineQuery = 'South American';
-            break;
-        default:
-            cuisineQuery = '';
-    }
-    return cuisineQuery;
+  });
+  console.log(`after: ${badgeOutput}`);
+  return badgeOutput;
 }
