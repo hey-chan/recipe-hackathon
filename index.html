@@ -1,146 +1,185 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel='stylesheet'
-      href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css'
-      integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l'
-      crossorigin='anonymous'
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
     />
     <title>Food Hack</title>
   </head>
   <body>
-    <div class='container container-fluid d-flex'>
-      <div id='sidebar' class='col-4'>
-        <div class='search'>
-          <form id='recipe-search' class='d-flex'>
+    <div class="container container-fluid d-flex">
+      <div id="sidebar" class="col-4">
+        <div class="search">
+          <form id="recipe-search" class="d-flex">
             <input
-              id='search-bar'
-              class='form-control me-2'
-              type='search'
-              placeholder='Search Recipes'
-              aria-label='Search'
+              id="search-bar"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search Recipes"
+              aria-label="Search"
             />
-            <button class='btn btn-outline-success' type='submit' id='search-btn'>Search</button>
+            <button
+              class="btn btn-outline-success"
+              type="submit"
+              id="search-btn"
+            >
+              Search
+            </button>
           </form>
         </div>
-        <div class='meal-type'>
-          <div class='dropdown'>
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="meal-type">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Meal Type
             </button>
             <div class="meal-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href='#'>Breakfast</a>
-              <a class="dropdown-item" href='#'>Lunch</a>
-              <a class="dropdown-item" href='#'>Dinner</a>
-              <a class="dropdown-item" href='#'>Snack</a>
-              <a class="dropdown-item" href='#'>Tea</a>
+              <a class="dropdown-item" href="#">Breakfast</a>
+              <a class="dropdown-item" href="#">Lunch</a>
+              <a class="dropdown-item" href="#">Dinner</a>
+              <a class="dropdown-item" href="#">Snack</a>
+              <a class="dropdown-item" href="#">Tea</a>
             </div>
-          </div>  <!-- close dropdown -->
-        </div>  <!-- close meal type -->
-        
-        <div class='cuisine-type'>
-          <div class='dropdown'>
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </div>
+          <!-- close dropdown -->
+        </div>
+        <!-- close meal type -->
+
+        <div class="cuisine-type">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               Cuisine
             </button>
             <div class="cuisine-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href='#'>American</a>
-              <a class="dropdown-item" href='#'>Asian</a>
-              <a class="dropdown-item" href='#'>British</a>
-              <a class="dropdown-item" href='#'>Carribean</a>
-              <a class="dropdown-item" href='#'>European (Central)</a>
-              <a class="dropdown-item" href='#'>Chinese</a>
-              <a class="dropdown-item" href='#'>European (Eastern)</a>
-              <a class="dropdown-item" href='#'>French</a>
-              <a class="dropdown-item" href='#'>Indian</a>
-              <a class="dropdown-item" href='#'>Italian</a>
-              <a class="dropdown-item" href='#'>Japanese</a>
-              <a class="dropdown-item" href='#'>Mediterranean</a>
-              <a class="dropdown-item" href='#'>Mexican</a>
-              <a class="dropdown-item" href='#'>Middle Eastern</a>
-              <a class="dropdown-item" href='#'>South American</a>
-              <a class="dropdown-item" href='#'>South East Asian</a>
+              <a class="dropdown-item" href="#">American</a>
+              <a class="dropdown-item" href="#">Asian</a>
+              <a class="dropdown-item" href="#">British</a>
+              <a class="dropdown-item" href="#">Carribean</a>
+              <a class="dropdown-item" href="#">European (Central)</a>
+              <a class="dropdown-item" href="#">Chinese</a>
+              <a class="dropdown-item" href="#">European (Eastern)</a>
+              <a class="dropdown-item" href="#">French</a>
+              <a class="dropdown-item" href="#">Indian</a>
+              <a class="dropdown-item" href="#">Italian</a>
+              <a class="dropdown-item" href="#">Japanese</a>
+              <a class="dropdown-item" href="#">Mediterranean</a>
+              <a class="dropdown-item" href="#">Mexican</a>
+              <a class="dropdown-item" href="#">Middle Eastern</a>
+              <a class="dropdown-item" href="#">South American</a>
+              <a class="dropdown-item" href="#">South East Asian</a>
             </div>
-          </div> <!-- close dropdown -->
-        </div> <!-- close cuisine type -->   
-        <div>  
-        <h5>Diet types</h5>
+          </div>
+          <!-- close dropdown -->
+        </div>
+        <!-- close cuisine type -->
+        <div>
+          <h5>Dietary types</h5>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Vegetarian
-            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check1"
+            />
+            <label class="form-check-label" for="check1"> Dairy-free </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Vegan
-            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check2"
+            />
+            <label class="form-check-label" for="check2"> Halal </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Nut free
-            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check3"
+            />
+            <label class="form-check-label" for="check3"> Nut-free </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Dairy free
-            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check4"
+            />
+            <label class="form-check-label" for="check4"> Vegan </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Wheat free
-            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check5"
+            />
+            <label class="form-check-label" for="check5"> Vegetarian </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-            <label class="form-check-label" for="defaultCheck1">
-              Halal friendly
-            </label>
-
-
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check6"
+            />
+            <label class="form-check-label" for="check6"> Wheat-free </label>
           </div>
           <button type="submit" class="btn btn-primary">Search</button>
-        </div>   
+        </div>
       </div>
 
       <!-- MATT CODE DOWN BELOW -->
-     
+
       <!--  ======================================================================
                                     MAIN SECTION
             ======================================================================
       -->
-      <div id='main-section' class='col-15 container container-fluid'>
-        <section> 
-          <div class = "meal-result">
-            <h2 class = "title">Your Search Results:</h2>
-            <div id="meal" class="row row-cols-md-2 mx-5">
- 
-            </div>
+      <div id="main-section" class="col-15 container container-fluid">
+        <section>
+          <div class="meal-result">
+            <h2 class="title">Your Search Results:</h2>
+            <div id="meal" class="row row-cols-md-2 mx-5"></div>
           </div>
-    
-    
-          <div class = "meal-details">
+
+          <div class="meal-details">
             <!-- recipe close btn -->
-            <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
-              <i class = "fas fa-times"></i>
+            <button
+              type="button"
+              class="btn recipe-close-btn"
+              id="recipe-close-btn"
+            >
+              <i class="fas fa-times"></i>
             </button>
-    
+
             <!-- meal content -->
-            <div class = "meal-details-content">
-             </div>
+            <div class="meal-details-content"></div>
           </div>
         </section>
       </div>
     </div>
   </body>
-  <script src='./script.js'></script>
+  <script src="./script.js"></script>
 </html>
-
