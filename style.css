@@ -6,6 +6,5 @@ body {
 #sidebar {
   max-height: 100vh !important;
   background-color: rgb(119, 216, 119) !important;
-  position: fixed;
 }
 
