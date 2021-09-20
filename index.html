@@ -14,8 +14,8 @@
   </head>
   <body>
     <div class="container container-fluid d-flex">
-      <div id="sidebar" class="col-4">
-        <div class="search">
+      <div id="sidebar" class="col-4 bg-warning">
+        <div class="search my-5">
           <form id="recipe-search" class="d-flex">
             <input
               id="search-bar"
@@ -25,7 +25,7 @@
               aria-label="Search"
             />
             <button
-              class="btn btn-outline-success"
+              class="btn btn-success ml-2"
               type="submit"
               id="search-btn"
             >
@@ -33,66 +33,42 @@
             </button>
           </form>
         </div>
-        <div class="meal-type">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Meal Type
-            </button>
-            <div class="meal-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Breakfast</a>
-              <a class="dropdown-item" href="#">Lunch</a>
-              <a class="dropdown-item" href="#">Dinner</a>
-              <a class="dropdown-item" href="#">Snack</a>
-              <a class="dropdown-item" href="#">Tea</a>
-            </div>
-          </div>
-          <!-- close dropdown -->
+
+        <div class="meal-type mb-4">
+          <p>View dishes by meal time/type:</p>
+          <select class="form-control" id="meal-time">
+            <option value="1">Breakfast</option>
+            <option value="2">Lunch</option>
+            <option value="3">Dinner</option>
+            <option value="4">Snack</option>
+            <option value="5">Tea</option>
+          </select>
         </div>
         <!-- close meal type -->
 
         <div class="cuisine-type">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Cuisine
-            </button>
-            <div class="cuisine-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">American</a>
-              <a class="dropdown-item" href="#">Asian</a>
-              <a class="dropdown-item" href="#">British</a>
-              <a class="dropdown-item" href="#">Carribean</a>
-              <a class="dropdown-item" href="#">European (Central)</a>
-              <a class="dropdown-item" href="#">Chinese</a>
-              <a class="dropdown-item" href="#">European (Eastern)</a>
-              <a class="dropdown-item" href="#">French</a>
-              <a class="dropdown-item" href="#">Indian</a>
-              <a class="dropdown-item" href="#">Italian</a>
-              <a class="dropdown-item" href="#">Japanese</a>
-              <a class="dropdown-item" href="#">Mediterranean</a>
-              <a class="dropdown-item" href="#">Mexican</a>
-              <a class="dropdown-item" href="#">Middle Eastern</a>
-              <a class="dropdown-item" href="#">South American</a>
-              <a class="dropdown-item" href="#">South East Asian</a>
-            </div>
-          </div>
-          <!-- close dropdown -->
+          <p>View dishes by cuisine:</p>
+          <select class="form-control" id="meal-time">
+            <option value="1">American</option>
+            <option value="2">Asian</option>
+            <option value="3">English</option>
+            <option value="4">Carribean</option>
+            <option value="5">Chinese</option>
+            <option value="6">European</option>
+            <option value="7">French</option>
+            <option value="8">Indian</option>
+            <option value="9">Italian</option>
+            <option value="10">Japanese</option>
+            <option value="11">Mediterranean</option>
+            <option value="12">Mexican</option>
+            <option value="13">Middle Eastern</option>
+            <option value="14">South American</option>
+          </select>
         </div>
-        <!-- close cuisine type -->
-        <div>
-          <h5>Diet types</h5>
+        <!-- close cuisine-type -->
+
+        <div class="diet-types">
+          <h4 class="mt-4 mb-3">Diet types</h4>
           <div class="form-check">
             <input
               class="form-check-input"
@@ -100,7 +76,9 @@
               value=""
               id="check1"
             />
-            <label class="form-check-label mb-2" for="check1"> Dairy-free </label>
+            <label class="form-check-label mb-2" for="check1">
+              Dairy-free
+            </label>
           </div>
           <div class="form-check">
             <input
@@ -136,7 +114,9 @@
               value=""
               id="check5"
             />
-            <label class="form-check-label mb-2" for="check5"> Vegetarian </label>
+            <label class="form-check-label mb-2" for="check5">
+              Vegetarian
+            </label>
           </div>
           <div class="form-check">
             <input
@@ -145,9 +125,13 @@
               value=""
               id="check6"
             />
-            <label class="form-check-label mb-2" for="check6"> Wheat-free </label>
+            <label class="form-check-label mb-2" for="check6">
+              Wheat-free
+            </label>
           </div>
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-primary mt-3 px-5 py-2 mb-5">
+            Search
+          </button>
         </div>
       </div>
 
