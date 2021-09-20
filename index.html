@@ -26,7 +26,7 @@
               aria-label="Search"
             />
             <button
-              class="btn btn-outline-primary ml-2"
+              class="btn btn-primary ml-2"
               type="submit"
               id="search-btn"
             >
@@ -49,7 +49,7 @@
 
         <div class="cuisine-type">
           <p>View dishes by cuisine:</p>
-          <select class="form-control" id="meal-time">
+          <select class="form-control" id="cuisine-type">
             <option value="1">American</option>
             <option value="2">Asian</option>
             <option value="3">English</option>
@@ -81,6 +81,7 @@
               Dairy-free
             </label>
           </div>
+
           <div class="form-check">
             <input
               class="form-check-input"
@@ -88,8 +89,9 @@
               value=""
               id="check2"
             />
-            <label class="form-check-label mb-2" for="check2"> Halal </label>
+            <label class="form-check-label mb-2" for="check2"> Gluten-free </label>
           </div>
+
           <div class="form-check">
             <input
               class="form-check-input"
@@ -97,8 +99,9 @@
               value=""
               id="check3"
             />
-            <label class="form-check-label mb-2" for="check3"> Nut-free </label>
+            <label class="form-check-label mb-2" for="check3"> Halal </label>
           </div>
+          
           <div class="form-check">
             <input
               class="form-check-input"
@@ -106,8 +109,9 @@
               value=""
               id="check4"
             />
-            <label class="form-check-label mb-2" for="check4"> Vegan </label>
+            <label class="form-check-label mb-2" for="check4"> Keto </label>
           </div>
+
           <div class="form-check">
             <input
               class="form-check-input"
@@ -115,10 +119,9 @@
               value=""
               id="check5"
             />
-            <label class="form-check-label mb-2" for="check5">
-              Vegetarian
-            </label>
+            <label class="form-check-label mb-2" for="check5"> Nut-free </label>
           </div>
+
           <div class="form-check">
             <input
               class="form-check-input"
@@ -126,12 +129,35 @@
               value=""
               id="check6"
             />
-            <label class="form-check-label mb-2" for="check6">
+            <label class="form-check-label mb-2" for="check6"> Vegan </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check7"
+            />
+            <label class="form-check-label mb-2" for="check7">
+              Vegetarian
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="check8"
+            />
+            <label class="form-check-label mb-2" for="check8">
               Wheat-free
             </label>
           </div>
-          <button type="submit" class="btn btn-primary mt-3 px-5 py-2 mb-5">
-            Search
+
+          <button type="submit" class="btn btn-info mt-3 px-5 py-2 mb-5">
+            Find Recipes
           </button>
         </div>
       </div>
