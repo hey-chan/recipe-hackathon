@@ -61,7 +61,22 @@ function useApiData(data) {
     mealList.innerHTML = html;
 }
 
+function filterHealthLabels(diets) {
+    console.log(diets);
+    const dietFilters = ['Dairy-Free', 'Gluten-Free', 'Pork-Free', 'Keto-Friendly', 'Tree-Nut-Free', 'Vegan', 'Vegetarian', 'Wheat-Free'];
+    let diet1 = 'Dairy-free';
+    let diet2 = 'Gluten-free';
+    let diet3 = 'Pork-free';
+    let diet4 = 'Keto-friendly';
+    let diet5 = 'Tree-nut-free';
+    let diet6 = 'Vegan';
+    let diet7 = 'Vegetarian';
+    let diet8 = 'Wheat-free';
 
+    const filteredDiets = diets.filter(word => dietFilters.includes(word));
+    console.log(filteredDiets);
+    return filteredDiets;
+}
 
 
 function mealTimeQuerySelector(mealTime) {
