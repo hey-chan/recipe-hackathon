@@ -1,7 +1,7 @@
 const searchBtn = document.getElementById("recipe-search");
 let mealList = document.getElementById("meal");
 let mealDetailsContent = document.querySelector(".meal-details-content");
-const findRecipesButton = document.getElementById("find-recipes");
+const findRecipesButton = document.getElementById('find-recipes');
 
 // API request URL sections
 const baseURL = "https://api.edamam.com/search?";
@@ -15,8 +15,8 @@ for (let i = 0; i < 6; i++) {
 }
 
 // event listeners
-searchBtn.addEventListener("submit", getMealList);
-findRecipesButton.addEventListener("submit", findRecipes);
+searchBtn.addEventListener('submit', getMealList);
+findRecipesButton.addEventListener('submit', findRecipes);
 
 // get meal list that matches with the ingredients
 async function getMealList(event) {
@@ -32,9 +32,11 @@ async function getMealList(event) {
 // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
 
 async function findRecipes(event) {
-  let mealTime = document.getElementById("meal-time");
-  let cuisineType = document.getElementById("cuisine-type");
-  let query = `${mealTime.value}&q=${cuisineType.value}`;
+  let mealTime = document.getElementById('meal-time');
+  let cuisineType = document.getElementById('cuisine-type');
+  let query = `${mealTime}&q=${cuisineType}`;
+  console.log('HIIIII');
+  console.log(mealTime, cuisineType, query);
 
 // =====================================================
 //  Do this or should we do each element by ID then use if checkbox/object.checked
