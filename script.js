@@ -21,16 +21,17 @@ function getMealList(event){
         if(data.hits){
             data.hits.forEach(({recipe}) => {
                 html += `
-                    <div class="meal-item" data-id="${meal.idMeal}">
-                        <div class="meal-img">
-                            <img src="${recipe.image}" alt="food">
-                        </div>
-                        <div class="meal-name">
-                            <h3>${recipe.label}</h3>
-                            <a href="#" class="recipe-btn">Get Recipe</a>
-                        </div>
+                <div class="col mb-4">
+                  <div class="card h-100">
+                    <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
+                    <div class="card-body">
+                      <h4 class="card-title">${recipe.label}</h4>
+                      <a href="#" class="btn btn-primary">Pill.1</a>
+                      <a href="#" class="btn btn-info">Pill.2</a>
                     </div>
-                `;
+                  </div>
+                </div>`
+                ;
             });
             mealList.classList.remove('notFound');
         } else{
@@ -41,3 +42,4 @@ function getMealList(event){
         mealList.innerHTML = html;
     });
 }
+
