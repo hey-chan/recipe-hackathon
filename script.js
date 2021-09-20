@@ -23,14 +23,16 @@ function getMealList(event){
                 html += `
                 <div class="col mb-4">
                   <div class="card h-100">
-                    <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
                     <div class="card-body">
-                      <h4 class="card-title">${recipe.label}</h4>
-                      <a href="#" class="btn btn-primary"> ${recipe.healthLabels[0]}</a>
-                      <a href="#" class="btn btn-primary"> ${recipe.cuisineType[0]}</a>
-                      <a href="#" class="btn btn-info">Calories: ${Math.floor(recipe.calories)}</a>
-                      <h5>Yield: ${recipe.yield} People</h5>
+                        <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
+                        <div class='card-details'>
+                            <span class="badge badge-dark">Cals: ${Math.floor(recipe.calories)}</span>
+                            <span class='ml-2'>👤 ${recipe.yield}</span>
+                            <span class="badge badge-success"> ${recipe.healthLabels[0]}</span>
+                        </div>
+                        <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
                     </div>
+                    
                   </div>
                 </div>`
                 ;
@@ -44,4 +46,3 @@ function getMealList(event){
         mealList.innerHTML = html;
     });
 }
-
