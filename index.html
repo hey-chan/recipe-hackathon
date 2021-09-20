@@ -10,6 +10,7 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href='./style.css'>
     <title>Food Hack</title>
   </head>
   <body>
@@ -30,7 +31,7 @@
               aria-label="Search"
             />
             <button
-              class="btn btn-outline-success"
+              class="btn btn-primary ml-2"
               type="submit"
               id="search-btn"
             >
@@ -38,149 +39,149 @@
             </button>
           </form>
         </div>
-        <div class="meal-type">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Meal Type
-            </button>
-            <div class="meal-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Breakfast</a>
-              <a class="dropdown-item" href="#">Lunch</a>
-              <a class="dropdown-item" href="#">Dinner</a>
-              <a class="dropdown-item" href="#">Snack</a>
-              <a class="dropdown-item" href="#">Tea</a>
-            </div>
-          </div>
-          <!-- close dropdown -->
-        </div>
-        <!-- close meal type -->
 
-        <div class="cuisine-type">
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Cuisine
-            </button>
-            <div class="cuisine-dropdown" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">American</a>
-              <a class="dropdown-item" href="#">Asian</a>
-              <a class="dropdown-item" href="#">British</a>
-              <a class="dropdown-item" href="#">Carribean</a>
-              <a class="dropdown-item" href="#">European (Central)</a>
-              <a class="dropdown-item" href="#">Chinese</a>
-              <a class="dropdown-item" href="#">European (Eastern)</a>
-              <a class="dropdown-item" href="#">French</a>
-              <a class="dropdown-item" href="#">Indian</a>
-              <a class="dropdown-item" href="#">Italian</a>
-              <a class="dropdown-item" href="#">Japanese</a>
-              <a class="dropdown-item" href="#">Mediterranean</a>
-              <a class="dropdown-item" href="#">Mexican</a>
-              <a class="dropdown-item" href="#">Middle Eastern</a>
-              <a class="dropdown-item" href="#">South American</a>
-              <a class="dropdown-item" href="#">South East Asian</a>
+        <form id='recipe-filter'>
+          <div class="meal-type mb-4">
+            <label>Meal type:</label>
+            <select class="form-control" id="meal-time">
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Snack">Snack</option>
+              <option value="Teatime">Tea</option>
+            </select>
+          </div>
+          <!-- close meal type -->
+
+          <div class="cuisine-type">
+            <label>Cuisine type:</label>
+            <select class="form-control" id="cuisine-type">
+              <option value="American">American</option>
+              <option value="Asian">Asian</option>
+              <option value="British">English</option>
+              <option value="Carribean">Carribean</option>
+              <option value="Central European">Central European</option>
+              <option value="Chinese">Chinese</option>
+              <option value="Eastern European">Eastern European</option>
+              <option value="French">French</option>
+              <option value="Indian">Indian</option>
+              <option value="Italian">Italian</option>
+              <option value="Japanese">Japanese</option>
+              <option value="Mediterranean">Mediterranean</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Middle Eastern">Middle Eastern</option>
+              <option value="South American">South American</option>
+            </select>
+          </div>
+          <!-- close cuisine-type -->
+
+          <div class="diet-types">
+            <h4 class="mt-4 mb-3">Dietary Requirements</h4>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="dairy-free"
+                id="check1"
+              />
+              <label class="form-check-label mb-2" for="check1">
+                Dairy-free
+              </label>
             </div>
-          </div>
-          <!-- close dropdown -->
-        </div>
-        <!-- close cuisine type -->
-        <div>
-          <h5>Diet types</h5>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check1"
-            />
-            <label class="form-check-label mb-2" for="check1"> Dairy-free </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check2"
-            />
-            <label class="form-check-label mb-2" for="check2"> Halal </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check3"
-            />
-            <label class="form-check-label mb-2" for="check3"> Nut-free </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check4"
-            />
-            <label class="form-check-label mb-2" for="check4"> Vegan </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check5"
-            />
-            <label class="form-check-label mb-2" for="check5"> Vegetarian </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="check6"
-            />
-            <label class="form-check-label mb-2" for="check6"> Wheat-free </label>
-          </div>
-          <button type="submit" class="btn btn-primary">Search</button>
-        </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="gluten-free"
+                id="check2"
+              />
+              <label class="form-check-label mb-2" for="check2"> Gluten-free </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="pork-free"
+                id="check3"
+              />
+              <label class="form-check-label mb-2" for="check3"> Halal </label>
+            </div>
+            
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="keto-friendly"
+                id="check4"
+              />
+              <label class="form-check-label mb-2" for="check4"> Keto </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="tree-nut-free"
+                id="check5"
+              />
+              <label class="form-check-label mb-2" for="check5"> Nut-free </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="vegan"
+                id="check6"
+              />
+              <label class="form-check-label mb-2" for="check6"> Vegan </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="vegetarian"
+                id="check7"
+              />
+              <label class="form-check-label mb-2" for="check7">
+                Vegetarian
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value="wheat-free"
+                id="check8"
+              />
+              <label class="form-check-label mb-2" for="check8">
+                Wheat-free
+              </label>
+            </div>
+          </div> <!-- close diet-types -->
+          <button type="submit" id='find-recipes' class="btn btn-info mt-3 px-5 py-2 mb-5">
+            Find Recipes
+          </button>
+        </form>
       </div>
 
-      <!-- MATT CODE DOWN BELOW -->
 
-      <!--  ======================================================================
-                                    MAIN SECTION
-            ======================================================================
-      -->
+
+<!--  
+  ======================================================================
+                              MAIN SECTION
+  ======================================================================
+-->
       <div id="main-section" class="col-15 container container-fluid">
         <section>
           <div class="meal-result">
-            <h2 class="title">Your Search Results:</h2>
-            <div id="meal" class="row row-cols-md-2 mx-5"></div>
-          </div>
-
-          <div class="meal-details">
-            <!-- recipe close btn -->
-            <button
-              type="button"
-              class="btn recipe-close-btn"
-              id="recipe-close-btn"
-            >
-              <i class="fas fa-times"></i>
-            </button>
-
-            <!-- meal content -->
-            <div class="meal-details-content"></div>
+            <h2 class="title mt-4 ml-3">Your Search Results:</h2>
+            <div id="meal" class="row row-cols-md-2 mx-5">
+            </div>
           </div>
         </section>
       </div>
