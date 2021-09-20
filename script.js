@@ -36,7 +36,7 @@ function useApiData(data) {
     let html = "";
     if (data.hits.length > 0) {
         data.hits.forEach(({recipe}) => {
-            filterHealthLabels(recipe.healthLabels);
+        let dietRequirements = filterHealthLabels(recipe.healthLabels);
             html += `
         <div class="col mb-4">
           <div class="card h-100">
@@ -45,8 +45,13 @@ function useApiData(data) {
               <div class='card-details'>
                 <span class='mr-2'>👤 ${recipe.yield}</span>
                 <span class="mr-2 badge badge-dark">Cal: ${Math.floor(recipe.calories)}</span>
-                <span class="mr-1 badge badge-success"> ${recipe.healthLabels[0]}</span>
-              </div>
+                
+                <span class="mr-1 badge badge-success"> ${dietRequirements[0]}</span>
+                <span class="mr-1 badge badge-success"> ${dietRequirements[1]}</span>
+                <span class="mr-1 badge badge-success"> ${dietRequirements[2]}</span>
+                <span class="mr-1 badge badge-success"> ${dietRequirements[3]}</span>
+              
+                </div>
               <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
             </div>  
           </div>
@@ -64,18 +69,29 @@ function useApiData(data) {
 function filterHealthLabels(diets) {
     console.log(diets);
     const dietFilters = ['Dairy-Free', 'Gluten-Free', 'Pork-Free', 'Keto-Friendly', 'Tree-Nut-Free', 'Vegan', 'Vegetarian', 'Wheat-Free'];
-    let diet1 = 'Dairy-free';
-    let diet2 = 'Gluten-free';
-    let diet3 = 'Pork-free';
-    let diet4 = 'Keto-friendly';
-    let diet5 = 'Tree-nut-free';
-    let diet6 = 'Vegan';
-    let diet7 = 'Vegetarian';
-    let diet8 = 'Wheat-free';
-
     const filteredDiets = diets.filter(word => dietFilters.includes(word));
     console.log(filteredDiets);
-    return filteredDiets;
+    return changeWords(filteredDiets);
+    // return filteredDiets;
+}
+
+function changeWords(diets) {
+    console.log(`change word diets: ${diets}`);
+    console.log(diets);
+    let badgeOutput = [];
+    diets.forEach((diet) => {
+        if (diet == 'Pork-Free') {
+            badgeOutput.push('Halal');
+        } else if (diet == 'Keto-Friendly') {
+            badgeOutput.push('Keto');
+        } else if (diet == 'Tree-Nut-Free') {
+            badgeOutput.push('Nut-Free');
+        } else {
+            badgeOutput.push(diet);
+        }
+    })
+    console.log(`after: ${badgeOutput}`);
+    return badgeOutput;
 }
 
 
