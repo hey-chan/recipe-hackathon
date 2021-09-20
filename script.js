@@ -3,6 +3,7 @@ const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const mealTime = document.getElementById('meal-time');
 const cuisineType = document.getElementById('cuisine-type');
+
 for (let i = 0; i < 6; i++) {
     const checkbox
 }
@@ -57,4 +58,84 @@ function getMealList(event){
 
         mealList.innerHTML = html;
     });
+}
+
+
+
+function mealTimeQuerySelector(mealTime) {
+  let mealQuery;
+  switch(mealTime.value) {
+    case 1:
+      mealQuery = 'Breakfast';
+      break;
+    case 2:
+      mealQuery = 'Lunch';
+      break;
+    case 3:
+      mealQuery = 'Dinner';
+      break;
+    case 4:
+      mealQuery = 'Snack';
+      break;
+    case 5:
+      mealQuery = 'Teatime';
+      break;
+    default:
+      mealQuery = '';
+  }
+  return mealQuery;
+}
+
+function cuisineQuerySelector(cuisineType) {
+  let cuisineQuery;
+  switch(cuisineType.value) {
+    case 1:
+        cuisineQuery = 'American';
+        break;
+    case 2:
+      cuisineQuery = 'Asian';
+      break;
+    case 3:
+      cuisineQuery = 'British';
+    break;
+    case 4:
+    cuisineQuery = 'Carribean';
+    break;
+    case 5:
+    cuisineQuery = 'Central Europe';
+    break;
+    case 6:
+    cuisineQuery = 'Chinese';
+    break;
+    case 7:
+    cuisineQuery = 'Eastern Europe';
+    break;
+    case 8:
+    cuisineQuery = 'French';
+    break;
+    case 9:
+    cuisineQuery = 'Indian';
+    break;
+    case 10:
+    cuisineQuery = 'Italian';
+    break;
+    case 11:
+    cuisineQuery = 'Japanese';
+    break;
+    case 12:
+    cuisineQuery = 'Mediterranean';
+    break;
+    case 13:
+    cuisineQuery = 'Mexican';
+    break;
+    case 14:
+    cuisineQuery = 'Middle Eastern';
+    break;
+    case 15:
+    cuisineQuery = 'South American';
+    break;
+    default:
+    cuisineQuery = '';
+  }
+  return cuisineQuery;
 }
