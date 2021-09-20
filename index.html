@@ -14,8 +14,8 @@
     <title>Food Hack</title>
   </head>
   <body>
-    <div class="container container-fluid d-flex">
-      <div id="sidebar" class="col-4 bg-warning position-sticky">
+    <div class="d-flex">
+      <div id="sidebar" class="col-3 bg-warning position-sticky">
         <div class="search my-5">
           <form id="recipe-search" class="d-flex">
             <input
@@ -69,7 +69,7 @@
         <!-- close cuisine-type -->
 
         <div class="diet-types">
-          <h4 class="mt-4 mb-3">Diet types</h4>
+          <h5 class="mt-4 mb-3">Diet types</h5>
           <div class="form-check">
             <input
               class="form-check-input"
@@ -130,22 +130,15 @@
               Wheat-free
             </label>
           </div>
-          <button type="submit" class="btn btn-primary mt-3 px-5 py-2 mb-5">
-            Search
-          </button>
+          <button class="btn btn-primary ml-2 mb-5 mt-2" type="submit" >Search</button>
         </div>
       </div>
 
-      <!-- MATT CODE DOWN BELOW -->
-
-      <!--  ======================================================================
-                                    MAIN SECTION
-            ======================================================================
-      -->
+      <!-- MAIN SECTION -->
       <div id="main-section" class="col-15 container container-fluid">
         <section>
           <div class="meal-result">
-            <h2 class="title">Your Search Results:</h2>
+            <h2 class="title ml-5 mt-4 mb-4">Your Search Results:</h2>
             <div id="meal" class="row row-cols-md-2 mx-5"></div>
           </div>
           </div>
