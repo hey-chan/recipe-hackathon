@@ -36,8 +36,9 @@ function useApiData(data) {
     let html = "";
     if (data.hits.length > 0) {
         data.hits.forEach(({recipe}) => {
+            filterHealthLabels(recipe.healthLabels);
             html += `
-        <div class="col-4 mb-4">
+        <div class="col mb-4">
           <div class="card h-100">
             <div class="card-body">
               <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
