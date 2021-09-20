@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-      crossorigin="anonymous"
+      rel='stylesheet'
+      href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css'
+      integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l'
+      crossorigin='anonymous'
     />
     <title>Food Hack</title>
   </head>
@@ -16,16 +16,30 @@
     <div class='container container-fluid d-flex'>
       <div id='sidebar' class='col-4'>
         <div class='search'>
-          <form id="recipe-search" class="d-flex">
+          <form id='recipe-search' class='d-flex'>
             <input
-              id="search-bar"
-              class="form-control me-2"
-              type="search"
-              placeholder="Search Recipes"
-              aria-label="Search"
+              id='search-bar'
+              class='form-control me-2'
+              type='search'
+              placeholder='Search Recipes'
+              aria-label='Search'
             />
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class='btn btn-outline-success' type='submit'>Search</button>
           </form>
+        </div>
+        <div class='meal-type'>
+          <div class='dropdown'>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Meal Type
+            </button>
+            <div class="meal-dropdown" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href='#'>Breakfast</a>
+              <a class="dropdown-item" href='#'>Lunch</a>
+              <a class="dropdown-item" href='#'>Dinner</a>
+              <a class="dropdown-item" href='#'>Snack</a>
+              <a class="dropdown-item" href='#'>Tea</a>
+            </div>
+          </div>
         </div>
       </div>
       <div id='main-window' class='col-15 container container-fluid'>
@@ -34,6 +48,6 @@
     </div>
     </div>
   </body>
-  <script src="./script.js"></script>
+  <script src='./script.js'></script>
 </html>
 
