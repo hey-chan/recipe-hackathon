@@ -26,8 +26,10 @@ function getMealList(event){
                     <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
                     <div class="card-body">
                       <h4 class="card-title">${recipe.label}</h4>
-                      <a href="#" class="btn btn-primary">Pill.1</a>
-                      <a href="#" class="btn btn-info">Pill.2</a>
+                      <a href="#" class="btn btn-primary"> ${recipe.healthLabels[0]}</a>
+                      <a href="#" class="btn btn-primary"> ${recipe.cuisineType[0]}</a>
+                      <a href="#" class="btn btn-info">Calories: ${Math.floor(recipe.calories)}</a>
+                      <h5>Yield: ${recipe.yield} People</h5>
                     </div>
                   </div>
                 </div>`
