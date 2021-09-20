@@ -43,20 +43,25 @@ function useApiData(data) {
             <div class="card-body">
               <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
               <div class='card-details'>
-                <span class='mr-2'>👤 ${recipe.yield}</span>
-                <span class="mr-2 badge badge-dark">Cal: ${Math.floor(recipe.calories)}</span>
-                
-                <span class="mr-1 badge badge-success"> ${dietRequirements[0]}</span>
-                <span class="mr-1 badge badge-success"> ${dietRequirements[1]}</span>
-                <span class="mr-1 badge badge-success"> ${dietRequirements[2]}</span>
-                <span class="mr-1 badge badge-success"> ${dietRequirements[3]}</span>
-              
+                 
+                  <span class='mr-2'>👤 ${recipe.yield}</span>
+                  <span class="mr-2 badge badge-dark">Cal: ${Math.floor(recipe.calories)}</span>
+                <div class='row mt-2'>  
+                  <span class="col mr-3 badge badge-success"> ${dietRequirements[0]}</span>
+                  <span class="col mr-3 badge badge-success"> ${dietRequirements[1]}</span>
                 </div>
+                
+                <div class='row mt-1'>  
+                  <span class="col mr-3 badge badge-success"> ${dietRequirements[2]}</span>
+                  <span class="col mr-3 badge badge-success"> ${dietRequirements[3]}</span>
+                </div>
+              </div>
               <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
             </div>  
           </div>
         </div>`;
         });
+        // <div class='row d-flex flex-direction-row justify-content-between'>
         mealList.classList.remove('notFound');
     } else {
         html = "Sorry, we couldn't find the meal you were looking for.";
@@ -72,7 +77,6 @@ function filterHealthLabels(diets) {
     const filteredDiets = diets.filter(word => dietFilters.includes(word));
     console.log(filteredDiets);
     return changeWords(filteredDiets);
-    // return filteredDiets;
 }
 
 function changeWords(diets) {
