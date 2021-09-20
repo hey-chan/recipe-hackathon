@@ -43,17 +43,18 @@ function useApiData(data) {
             <div class="card-body">
               <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
               <div class='card-details'>
-                 
-                  <span class='mr-2'>👤 ${recipe.yield}</span>
-                  <span class="mr-2 badge badge-dark">Cal: ${Math.floor(recipe.calories)}</span>
-                <div class='row mt-2'>  
-                  <span class="col mr-3 badge badge-success"> ${dietRequirements[0]}</span>
-                  <span class="col mr-3 badge badge-success"> ${dietRequirements[1]}</span>
+                <div class='row'> 
+                  <span class='col mr-1'>Servings: 👤 ${recipe.yield}</span>
+                  <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(recipe.calories)}</span>
+                </div>
+                <div class='row mt-2 mx-auto'>  
+                  <span class="col mr-2 badge badge-success"> ${dietRequirements[0]}</span>
+                  <span class="col mr-2 badge badge-success"> ${dietRequirements[1]}</span>
                 </div>
                 
-                <div class='row mt-1'>  
-                  <span class="col mr-3 badge badge-success"> ${dietRequirements[2]}</span>
-                  <span class="col mr-3 badge badge-success"> ${dietRequirements[3]}</span>
+                <div class='row mt-1 mx-auto'>  
+                  <span class="col mr-2 badge badge-success"> ${dietRequirements[2]}</span>
+                  <span class="col mr-2 badge badge-success"> ${dietRequirements[3]}</span>
                 </div>
               </div>
               <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
