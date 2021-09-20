@@ -1,6 +1,17 @@
 const searchBtn = document.getElementById('recipe-search');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
+const mealTime = document.getElementById('meal-time');
+const cuisineType = document.getElementById('cuisine-type');
+for (let i = 0; i < 6; i++) {
+    const checkbox
+}
+
+const baseURL = "https://api.edamam.com/";
+const APP_ID = '3e505aa4'
+const appID = `search?app_id=${APP_ID}`;
+const API_KEY = '45522e7d11757a45d7cbc588999ef9c3'
+const appKey =  `&app_key=${API_KEY}`;
 
 // event listeners
 searchBtn.addEventListener('submit', getMealList);
@@ -10,10 +21,11 @@ searchBtn.addEventListener('submit', getMealList);
 function getMealList(event){
     event.preventDefault();
     console.log('hello')
-    let APP_ID = '3e505aa4'
-    let API_KEY = '45522e7d11757a45d7cbc588999ef9c3'
+
     let searchInputTxt = document.getElementById('search-bar').value.trim();
-    fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
+    fetch(`${baseURL}${appID}${appKey}&q=${searchInputTxt}`)
+
+    // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
     .then(response => response.json())
     .then(data => {
         let html = "";
