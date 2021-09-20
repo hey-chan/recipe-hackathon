@@ -21,26 +21,23 @@ async function getMealList(event) {
     const appKey = `&app_key=${API_KEY}`;
     let searchInputTxt = document.getElementById('search-bar').value.trim();
 
-    // let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
     let fetchURL = `${baseURL}${appID}${appKey}&q=${searchInputTxt}`;
+    // let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
     
     event.preventDefault();
-    console.log('hello')
-
     let response = await fetch(fetchURL);
-    console.log(response);
     let data = await response.json()
-    console.log(data)
     useApiData(data)
 }
 // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
 
 function useApiData(data) {
+    console.log(data)
     let html = "";
-    if (data.hits > 0) {
+    if (data.hits.length > 0) {
         data.hits.forEach(({recipe}) => {
             html += `
-        <div class="col mb-4">
+        <div class="col-4 mb-4">
           <div class="card h-100">
             <div class="card-body">
               <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
