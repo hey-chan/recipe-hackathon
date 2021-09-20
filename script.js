@@ -85,3 +85,57 @@ function mealTimeQuerySelector(mealTime) {
   }
   return mealQuery;
 }
+
+function cuisineQuerySelector(cuisineType) {
+  let cuisineQuery;
+  switch(cuisineType.value) {
+    case 1:
+        cuisineQuery = 'American';
+        break;
+    case 2:
+      cuisineQuery = 'Asian';
+      break;
+    case 3:
+      cuisineQuery = 'British';
+    break;
+    case 4:
+    cuisineQuery = 'Carribean';
+    break;
+    case 5:
+    cuisineQuery = 'Central Europe';
+    break;
+    case 6:
+    cuisineQuery = 'Chinese';
+    break;
+    case 7:
+    cuisineQuery = 'Eastern Europe';
+    break;
+    case 8:
+    cuisineQuery = 'French';
+    break;
+    case 9:
+    cuisineQuery = 'Indian';
+    break;
+    case 10:
+    cuisineQuery = 'Italian';
+    break;
+    case 11:
+    cuisineQuery = 'Japanese';
+    break;
+    case 12:
+    cuisineQuery = 'Mediterranean';
+    break;
+    case 13:
+    cuisineQuery = 'Mexican';
+    break;
+    case 14:
+    cuisineQuery = 'Middle Eastern';
+    break;
+    case 15:
+    cuisineQuery = 'South American';
+    break;
+    default:
+    cuisineQuery = '';
+  }
+  return cuisineQuery;
+}
