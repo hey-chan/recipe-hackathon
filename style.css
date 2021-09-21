@@ -11,6 +11,27 @@ body {
     height: 600px;
 }
 
+.banner-title {
+    background-image: url("./Title.png");
+    background-size: cover;
+    width: 800px;
+    height: 200px;
+    position: absolute;
+    top: 20%;
+    /* justify-content: center; */
+    left: 20%;
+
+}
+
+.wrapper {
+    background: rgba(0, 0, 0, 0.406);
+    backdrop-filter: blur(3px);
+    width: 100vw;
+    height: 250px;
+    position: absolute;
+    top: 20%;
+}
+
 /* For mobile view */
 .burger {
   display: none;
@@ -27,6 +48,7 @@ body {
     top: 65%;
     left: 25%;
 }
+
 
 #sidebar{
   max-height: 100vh !important;
