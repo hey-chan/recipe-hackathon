@@ -11,9 +11,35 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href='./style.css'>
-    <title>Food Hack</title>
+    <title>Recipedia</title>
   </head>
   <body>
+    <div class='banner'>
+    </div>
+    <div class="search my-5 col-6" id="bar">
+      <form id="recipe-search" class="d-flex">
+        <input
+          id="search-bar"
+          class="form-control me-2"
+          type="search"
+          placeholder="Find a recipe"
+          aria-label="Search"
+        />
+        <button
+          class="btn btn-primary ml-2"
+          type="submit"
+          id="search-btn"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+    <div class='wrapper'>
+      <p> </p>
+    </div>
+    <div class="banner-title">
+    </div>
+    
     <div class="d-flex">
       <div id="sidebar" class="col-3 bg-warning position-sticky">
 
@@ -21,24 +47,6 @@
           <div class="line1"></div>
           <div class="line2"></div>
           <div class="line3"></div>
-        </div>
-        <div class="search my-5">
-          <form id="recipe-search" class="d-flex">
-            <input
-              id="search-bar"
-              class="form-control me-2"
-              type="search"
-              placeholder="Find a recipe"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-primary ml-2"
-              type="submit"
-              id="search-btn"
-            >
-              Search
-            </button>
-          </form>
         </div>
 
         <form id='recipe-filter'>
