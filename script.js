@@ -19,13 +19,16 @@ searchBtn.addEventListener('submit', getMealList);
 findRecipesButton.addEventListener('submit', findRecipes);
 
 // get meal list that matches with the ingredients
-async function getMealList(event) {
+function getMealList(event) {
   let searchInputTxt = document.getElementById("search-bar").value.trim();
   let fetchURL = `${baseURL}${appID}${appKey}&q=${searchInputTxt}`;
   event.preventDefault();
-  let response = await fetch(fetchURL);
-  let data = await response.json();
-  useApiData(data);
+  let response = fetch(fetchURL)
+    .then(response => response.json())
+    .then( data => {
+        useApiData(data)
+    })
+
 }
 // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
 
@@ -59,13 +62,16 @@ function buildCardView(recipe) {
 }
 
 function createClickEvent(node, recipe) {
-    node.addEventListener('click', () => {
+    node.addEventListener("click", () => {
         console.log('i got clicked');
         buildCardView(recipe);
     })
 }
 
+const heading = document.getElementById('title')
+
 function createCard(recipe, id) {
+    console.log(recipe.shareAs);
     const card = document.createElement('div');
     let dietRequirements = filterHealthLabels(recipe.healthLabels);
 
@@ -89,13 +95,13 @@ function createCard(recipe, id) {
           <span class="col mr-2 badge badge-success"> ${dietRequirements[3]}</span>
         </div>
       </div>
-      <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
+      <a href="${recipe.url}" class="card-title text-primary mt-1">${recipe.label}</a>
     </div>  
   </div>`
     createClickEvent(card, recipe);
 //   card.addEventListener('click', (event) => console.log("CLICKEDY CLICK"));
 //   buildCardView(recipe)
-  mealList.appendChild(card);
+    mealList.appendChild(card);
 }
 
 function useApiData(data) {
@@ -103,10 +109,9 @@ function useApiData(data) {
     
     let html = "";
     if (data.hits.length > 0) {
-        data.hits.forEach(({ recipe }, index) => {
+      data.hits.forEach(({recipe}, index) => {
         createCard({recipe}.recipe, index)
       });
-      // <div class='row d-flex flex-direction-row justify-content-between'>
       mealList.classList.remove("notFound");
     } else {
       html = "Sorry, we couldn't find the meal you were looking for.";
