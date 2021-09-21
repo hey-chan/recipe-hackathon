@@ -58,11 +58,17 @@ function buildCardView(recipe) {
     mainWindow.innerHTML = `<h1> ${recipe.label} </h1>`
 }
 
+function createClickEvent(node, recipe) {
+    node.addEventListener('click', () => {
+        console.log('i got clicked');
+        buildCardView(recipe);
+    })
+}
+
 function createCard(recipe, id) {
     const card = document.createElement('div');
-
-    console.log(recipe);
     let dietRequirements = filterHealthLabels(recipe.healthLabels);
+
     card.classList.add('col', 'mb-4');
     card.id = id; 
     card.innerHTML = `<div class="card h-100">
@@ -86,8 +92,10 @@ function createCard(recipe, id) {
       <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
     </div>  
   </div>`
-  card.addEventListener('click', (event) => buildCardView(recipe))
-  mealList.appendChild(card) 
+    createClickEvent(card, recipe);
+//   card.addEventListener('click', (event) => console.log("CLICKEDY CLICK"));
+//   buildCardView(recipe)
+  mealList.appendChild(card);
 }
 
 function useApiData(data) {
