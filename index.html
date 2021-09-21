@@ -38,7 +38,7 @@
         <form id='recipe-filter'>
           <div class="meal-type mb-4">
             <label>Meal type:</label>
-            <select class="form-control" id="meal-time">
+            <select name="meal" class="form-control" id="meal-time">
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
               <option value="Dinner">Dinner</option>
@@ -50,7 +50,7 @@
 
           <div class="cuisine-type">
             <label>Cuisine type:</label>
-            <select class="form-control" id="cuisine-type">
+            <select name="cuisine" class="form-control" id="cuisine-type">
               <option value="American">American</option>
               <option value="Asian">Asian</option>
               <option value="British">English</option>
@@ -158,7 +158,7 @@
               </label>
             </div>
           </div> <!-- close diet-types -->
-          <button type="submit" id='find-recipes' class="btn btn-info mt-3 px-5 py-2 mb-5">
+          <button type="submit" value="submit" id='find-recipes' class="btn btn-info mt-3 px-5 py-2 mb-5">
             Find Recipes
           </button>
         </form>
@@ -171,7 +171,7 @@
                               MAIN SECTION
   ======================================================================
 -->
-      <div id="main-section" class="col-15 container container-fluid">
+      <div id="main-section" class="col-16 container container-fluid">
         <section>
           <div class="meal-result">
             <h2 class="title mt-4 ml-3">Your Search Results:</h2>

@@ -22,8 +22,6 @@ findRecipesButton.addEventListener('submit', findRecipes);
 async function getMealList(event) {
   let searchInputTxt = document.getElementById("search-bar").value.trim();
   let fetchURL = `${baseURL}${appID}${appKey}&q=${searchInputTxt}`;
-  // let fetchURL = `${baseURL}${appID}${appKey}&q=${query}`;
-
   event.preventDefault();
   let response = await fetch(fetchURL);
   let data = await response.json();
@@ -35,6 +33,8 @@ async function findRecipes(event) {
   let mealTime = document.getElementById('meal-time');
   let cuisineType = document.getElementById('cuisine-type');
   let query = `${mealTime}&q=${cuisineType}`;
+
+
   console.log('HIIIII');
   console.log(mealTime, cuisineType, query);
 
@@ -53,18 +53,19 @@ async function findRecipes(event) {
 
 function useApiData(data) {
   console.log(data);
+  
   let html = "";
   if (data.hits.length > 0) {
-    data.hits.forEach(({ recipe }) => {
+      data.hits.forEach(({ recipe }, index) => {
       let dietRequirements = filterHealthLabels(recipe.healthLabels);
       html += `
-        <div class="col mb-4">
+        <div class="col mb-4" id='recipe${index}'>
           <div class="card h-100">
             <div class="card-body">
-              <img src="${recipe.image}" class="card-img-top mb-2" alt="...">
+              <img src="${recipe.image}" class="card-img-top mb-2" alt="${recipe.label}">
               <div class='card-details'>
                 <div class='row'> 
-                  <span class='col mr-1'>Servings: 👤 ${recipe.yield}</span>
+                  <span class='col mr-1'>Serves: 👤 ${recipe.yield}</span>
                   <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(
                     recipe.calories
                   )}</span>
@@ -92,10 +93,14 @@ function useApiData(data) {
   }
 
   mealList.innerHTML = html;
+
+  
 }
 
+let { totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url } = recipe; 
+        console.log(totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url);
+
 function filterHealthLabels(diets) {
-  console.log(diets);
   const dietFilters = [
     "Dairy-Free",
     "Gluten-Free",
@@ -107,13 +112,10 @@ function filterHealthLabels(diets) {
     "Wheat-Free",
   ];
   const filteredDiets = diets.filter((word) => dietFilters.includes(word));
-  console.log(filteredDiets);
   return changeWords(filteredDiets);
 }
 
 function changeWords(diets) {
-  console.log(`change word diets: ${diets}`);
-  console.log(diets);
   let badgeOutput = [];
   diets.forEach((diet) => {
     if (diet == "Pork-Free") {
@@ -126,6 +128,5 @@ function changeWords(diets) {
       badgeOutput.push(diet);
     }
   });
-  console.log(`after: ${badgeOutput}`);
   return badgeOutput;
 }
