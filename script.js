@@ -50,12 +50,14 @@ async function findRecipes(event) {
 }
 
 function buildCardView(recipe) {
-    /// change contents of mealList
-
+    // change contents of mealList
+    let mainWindow = document.getElementById('main-section'); 
+    console.log("I WAS CLICKED");
     let { totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url } = recipe; 
     console.log(totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url);
-    mealList.innerHTML = `<h1> ${recipe.label}`
+    mainWindow.innerHTML = `<h1> ${recipe.label} </h1>`
 }
+
 function createCard(recipe, id) {
     const card = document.createElement('div');
 
@@ -84,8 +86,8 @@ function createCard(recipe, id) {
       <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
     </div>  
   </div>`
-  card.addEventListener(click, (event) => buildCardView(recipe))
-  mainList.appendChild(card) 
+  card.addEventListener('click', (event) => buildCardView(recipe))
+  mealList.appendChild(card) 
 }
 
 function useApiData(data) {
@@ -102,8 +104,7 @@ function useApiData(data) {
       html = "Sorry, we couldn't find the meal you were looking for.";
       mealList.classList.add("notFound");
     }
-  
-    mealList.innerHTML = html;
+    mealList.innerHTML += html;
 }
 
 function filterHealthLabels(diets) {
@@ -136,7 +137,6 @@ function changeWords(diets) {
   });
   return badgeOutput;
 }
-
 
 // Front end sidebar
 const navSlide = () => {
