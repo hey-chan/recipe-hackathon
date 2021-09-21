@@ -4,6 +4,13 @@ body {
   left: 0;
 }
 
+.banner {
+    background-image: url("./banner2.jpeg");
+    background-size: cover;
+    width: 100vw;
+    height: 600px;
+}
+
 /* For mobile view */
 .burger {
   display: none;
@@ -15,6 +22,11 @@ body {
   margin: 6px 0;
 }
 
+#bar {
+    position: absolute;
+    top: 65%;
+    left: 25%;
+}
 
 #sidebar{
   max-height: 100vh !important;
