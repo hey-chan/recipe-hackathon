@@ -34,8 +34,6 @@ async function findRecipes(event) {
   let cuisineType = document.getElementById('cuisine-type');
   let query = `${mealTime}&q=${cuisineType}`;
 
-
-  console.log('HIIIII');
   console.log(mealTime, cuisineType, query);
 
 // =====================================================
@@ -51,54 +49,62 @@ async function findRecipes(event) {
   useApiData(data);
 }
 
-function useApiData(data) {
-  console.log(data);
-  
-  let html = "";
-  if (data.hits.length > 0) {
-      data.hits.forEach(({ recipe }, index) => {
-      let dietRequirements = filterHealthLabels(recipe.healthLabels);
-      html += `
-        <div class="col mb-4" id='recipe${index}'>
-          <div class="card h-100">
-            <div class="card-body">
-              <img src="${recipe.image}" class="card-img-top mb-2" alt="${recipe.label}">
-              <div class='card-details'>
-                <div class='row'> 
-                  <span class='col mr-1'>Serves: 👤 ${recipe.yield}</span>
-                  <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(
-                    recipe.calories
-                  )}</span>
-                </div>
-                <div class='row mt-2 mx-auto'>  
-                  <span class="col mr-2 badge badge-success"> ${dietRequirements[0]}</span>
-                  <span class="col mr-2 badge badge-success"> ${dietRequirements[1]}</span>
-                </div>
-                
-                <div class='row mt-1 mx-auto'>  
-                  <span class="col mr-2 badge badge-success"> ${dietRequirements[2]}</span>
-                  <span class="col mr-2 badge badge-success"> ${dietRequirements[3]}</span>
-                </div>
-              </div>
-              <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
-            </div>  
-          </div>
-        </div>`;
-    });
-    // <div class='row d-flex flex-direction-row justify-content-between'>
-    mealList.classList.remove("notFound");
-  } else {
-    html = "Sorry, we couldn't find the meal you were looking for.";
-    mealList.classList.add("notFound");
-  }
+function buildCardView(recipe) {
+    /// change contents of mealList
 
-  mealList.innerHTML = html;
+    let { totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url } = recipe; 
+    console.log(totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url);
+    mealList.innerHTML = `<h1> ${recipe.label}`
+}
+function createCard(recipe, id) {
+    const card = document.createElement('div');
 
-  
+    console.log(recipe);
+    let dietRequirements = filterHealthLabels(recipe.healthLabels);
+    card.classList.add('col', 'mb-4');
+    card.id = id; 
+    card.innerHTML = `<div class="card h-100">
+    <div class="card-body">
+      <img src="${recipe.image}" class="card-img-top mb-2" alt="${recipe.label}">
+      <div class='card-details'>
+        <div class='row'> 
+          <span class='col mr-1'>Serves: 👤 ${recipe.yield}</span>
+          <span class="col mr-3 badge badge-dark my-auto">Cal: ${Math.floor(recipe.calories)}</span>
+        </div>
+        <div class='row mt-2 mx-auto'>  
+          <span class="col mr-2 badge badge-success"> ${dietRequirements[0]}</span>
+          <span class="col mr-2 badge badge-success"> ${dietRequirements[1]}</span>
+        </div>
+        
+        <div class='row mt-1 mx-auto'>  
+          <span class="col mr-2 badge badge-success"> ${dietRequirements[2]}</span>
+          <span class="col mr-2 badge badge-success"> ${dietRequirements[3]}</span>
+        </div>
+      </div>
+      <h4 class="card-title text-primary mt-1">${recipe.label}</h4>
+    </div>  
+  </div>`
+  card.addEventListener(click, (event) => buildCardView(recipe))
+  mainList.appendChild(card) 
 }
 
-let { totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url } = recipe; 
-        console.log(totalNutrients, totalDaily, calories, yield, ingredients, image, healthLabels, cuisineType, label, url);
+function useApiData(data) {
+    console.log(data);
+    
+    let html = "";
+    if (data.hits.length > 0) {
+        data.hits.forEach(({ recipe }, index) => {
+        createCard({recipe}.recipe, index)
+      });
+      // <div class='row d-flex flex-direction-row justify-content-between'>
+      mealList.classList.remove("notFound");
+    } else {
+      html = "Sorry, we couldn't find the meal you were looking for.";
+      mealList.classList.add("notFound");
+    }
+  
+    mealList.innerHTML = html;
+}
 
 function filterHealthLabels(diets) {
   const dietFilters = [
