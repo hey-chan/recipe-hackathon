@@ -19,15 +19,17 @@ searchBtn.addEventListener("submit", getMealList);
 findRecipesButton.addEventListener("submit", findRecipes);
 
 // get meal list that matches with the ingredients
-async function getMealList(event) {
+function getMealList(event) {
   let searchInputTxt = document.getElementById("search-bar").value.trim();
   let fetchURL = `${baseURL}app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`;
   event.preventDefault();
+
   let response = await fetch(fetchURL);
   let data = await response.json();
   console.log(data);
   useApiData(data);
   addClickEventListener(data);
+
 }
 
 // fetch(`https://api.edamam.com/search?app_id=${APP_ID}&app_key=${API_KEY}&q=${searchInputTxt}`)
@@ -134,6 +136,8 @@ function addClickEventListener(data) {
   //   createClickEvent(cardObject, recipe);
   // })
 }
+
+const heading = document.getElementById('title')
 
 function createCard(recipe, id) {
   console.log(`this is the recipe id: ${id}`);
