@@ -89,7 +89,36 @@ function buildCardView(recipe) {
   <img src=${image} />
   <h2>Ingredients</h2>
   ${ingredientBulletDisplay(ingredients)}
+  ${nutritionDisplay(totalNutrients, totalDaily)}
   `;
+}
+
+function nutritionDisplay(nutrientWeight, dailyIntake) {
+  const nutritionList = nutritionDataArrangement(nutrientWeight, dailyIntake);
+  console.log(`THIS IS THE NUTRIENT LIST: ${nutrientList}`)
+  return nutritionList;
+}
+
+function nutritionDataArrangement(nutrientWeight, dailyIntake) {
+  console.log('This is the nutrientWeight object');
+  console.log(nutrientWeight);
+  const nutrientObject = {};
+  Object.entries(dailyIntake).forEach((key) => {
+    console.log(`This is the % daily intake: ${key[1].label} ${key[1].quantity.toFixed(1)} ${key[1].unit}`);
+  })
+  
+  Object.entries(nutrientWeight).forEach((nutrient) => {
+    console.log(`This is the nutrient label: ${nutrient[1].label}`);
+    console.log(`This is the nutrient quantity: ${nutrient[1].quantity.toFixed(1)}`);
+    console.log(`This is the nutrient unit: ${nutrient[1].unit}`);
+    // nutrientObject.push({nutrient: {"label": `${nutrient.label}`, "quantity": `${nutrient.quantity} ${nutrient.unit}`}})
+  });
+  console.log(nutrientObject);
+
+  
+
+
+  return nutrientObject;
 }
 
 function ingredientBulletDisplay(ingredients) {
