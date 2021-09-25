@@ -5,37 +5,39 @@ body {
 }
 
 .banner {
-    background-image: url("./banner2.jpeg");
-    background-size: cover;
-    width: 100vw;
-    height: 600px;
+  background-image: url("./banner2.jpeg");
+  background-size: cover;
+  width: 100vw;
+  height: 80vh;
 }
 
-.banner-title {
-    background-image: url("./Title.png");
-    background-size: cover;
-    width: 800px;
-    height: 200px;
-    position: absolute;
-    top: 20%;
-    /* justify-content: center; */
-    left: 20%;
+.title-banner {
+  color: rgb(255, 255, 255);
+  font-family: inter;
+  font-size: 8vw;
+  position: absolute;
+}
 
+.outside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20%;
 }
 
 .wrapper {
-    background: rgba(0, 0, 0, 0.406);
-    backdrop-filter: blur(3px);
-    width: 100vw;
-    height: 250px;
-    position: absolute;
-    top: 20%;
+  background: rgba(0, 0, 0, 0.406);
+  backdrop-filter: blur(3px);
+  width: 100vw;
+  height: 250px;
 }
 
 /* For mobile view */
 .burger {
   display: none;
 }
+
 .burger div {
   width: 30px;
   height: 5px;
@@ -44,13 +46,12 @@ body {
 }
 
 #bar {
-    position: absolute;
-    top: 65%;
-    left: 25%;
+  position: absolute;
+  top: 65%;
+  left: 25%;
 }
 
-
-#sidebar{
+#sidebar {
   max-height: 100vh !important;
   background-color: #ffe5cc !important;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -61,10 +62,9 @@ body {
   padding-top: 20px;
 }
 
-
 /* When size is less than 750px wide */
 @media screen and (max-width: 750px) {
-  #sidebar{
+  #sidebar {
     display: inline;
     position: relative;
     right: 0px;
@@ -83,6 +83,4 @@ body {
     display: block;
     cursor: pointer;
   }
-
 }
-
