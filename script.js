@@ -91,7 +91,69 @@ function buildCardView(recipe) {
   <img src=${image} />
   <h2>Ingredients</h2>
   ${ingredientBulletDisplay(ingredients)}
+  ${nutritionDisplay(totalNutrients, totalDaily)}
   `;
+}
+
+function nutritionDisplay(nutrientWeight, dailyIntake) {
+  const nutritionList = nutritionDataArrangement(nutrientWeight, dailyIntake);
+  console.log(`THIS IS THE NUTRIENT LIST: ${nutritionList}`);
+  return nutritionList;
+}
+
+function nutritionDataArrangement(nutrientWeight, dailyIntake) {
+  console.log("This is the nutrientWeight object");
+  console.log(nutrientWeight);
+  const nutrientListArray = [];
+  let nutritionObject = {};
+  const percentageArray = [];
+
+  console.log(`This is the weight: \n\n`);
+  Object.entries(nutrientWeight).forEach((nutrient) => {
+    nutritionObject = {
+      name: nutrient[1].label,
+      quantity: nutrient[1].quantity.toFixed(1),
+      unit: nutrient[1].unit,
+    };
+    nutrientListArray.push(nutritionObject);
+    console.log(nutritionObject);
+  });
+
+  console.log(`\n\n This is the % daily intake: \n\n`);
+  Object.entries(dailyIntake).forEach((nutrient) => {
+    percentageObject = {
+      name: nutrient[1].label,
+      percentage: `${nutrient[1].quantity.toFixed(1)}%`,
+    };
+    console.log(percentageObject);
+    percentageArray.push(percentageObject);
+  });
+  //==============================================================================================================================
+
+  // trying to merge objects with same keys together, though think should do it for each individual object
+  // rather than the array of objects..
+
+  //==============================================================================================================================
+
+  // const mergedObjects = [...nutrientListArray, ...percentageArray];
+  // const combining = nutrientListArray.forEach((item) => {
+  //   percentageArray.forEach((percentage) => {
+  //     const merged = {
+  //       ...item,
+  //       ...percentage
+  //     }
+  //     console.log(merged);
+  //     mergedObjects.push(merged);
+  //   });
+  // })
+
+  // console.log(nutrientListArray, percentageArray);
+  console.log("\n\nBelow is the merged object: \n");
+  // console.log(mergedObjects);
+  const merged = Object.assign({}, nutrientListArray, percentageArray);
+  console.log(merged);
+
+  return merged;
 }
 
 function ingredientBulletDisplay(ingredients) {
@@ -101,40 +163,30 @@ function ingredientBulletDisplay(ingredients) {
 
 function formatHTMLIngredients(items) {
   let htmlOutput = ["<ul>"];
-  items.forEach(item => {
-    htmlOutput.push(`<li class='mb-3'>${item}</li>\n`)
-  })
+  items.forEach((item) => {
+    htmlOutput.push(`<li class='mb-3'>${item}</li>\n`);
+  });
   htmlOutput.push("</ul>");
-  return htmlOutput.join('');
+  return htmlOutput.join("");
 }
 
 function displayIngredients(ingredients) {
-  const ingredientArray = []
+  const ingredientArray = [];
   ingredients.forEach((item) => {
     ingredientArray.push(item.text);
-  })
+  });
   return ingredientArray;
 }
 
-function createClickEvent(node, recipe) {
-  console.log(`This is the node: ${node}`);
-  node.addEventListener("click", () => {
-    console.log("i got clicked, THIS IS THE CREATE CLICK EVENT");
-    buildCardView(recipe);
-  });
-}
-
 function addClickEventListener(data) {
-
-  const recipeCard = document.querySelector(".clickMe");
-  console.log(`Does this get printed? ${recipeCard}`);
-  console.log(data.hits[0]);
-  let recipe = data.hits[0].recipe
-  createClickEvent(recipeCard, recipe);
-
-  // recipeCard.forEach((cardObject) => {
-  //   createClickEvent(cardObject, recipe);
-  // })
+  const recipeCard = document.querySelectorAll(".clickMe");
+  const recipes = data.hits;
+  const accessEachNodeObjectInArray = [...recipeCard].forEach((node, index) => {
+    node.addEventListener('click', () => {
+      console.log(`An Event listener was added for ${index}`);
+      buildCardView(recipes[index].recipe);
+    });
+  });
 }
 
 const heading = document.getElementById('title')
@@ -159,14 +211,9 @@ function createCard(recipe, id) {
         <a href=${recipe.url} class="card-title text-primary mt-1"><h2>${recipe.label}</h2></a>
       </div>  
     </div>`;
-    // let clickAdder = document.getElementById(`${id}`);
-    
-// function calls go back here.......
 
-mealList.appendChild(card);
-
+  mealList.appendChild(card);
 }
-
 
 function badgeWordFunction(diet) {
   let dietaryDisplay = "";
@@ -194,13 +241,7 @@ function useApiData(data) {
   let html = "";
   if (data.hits.length > 0) {
     data.hits.forEach(({ recipe }, index) => {
-      createCard({recipe}.recipe, `recipe${index}`);
-
-      // addClickEventListener({recipe}.recipe, `recipe${index}`)
-
-
-      // .then(createClickEvent(clickAdder, recipe))
-      // .then(mealList.appendChild(card));
+      createCard({ recipe }.recipe, `recipe${index}`);
     });
     mealList.classList.remove("notFound");
   } else {
