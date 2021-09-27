@@ -95,30 +95,63 @@ function buildCardView(recipe) {
 
 function nutritionDisplay(nutrientWeight, dailyIntake) {
   const nutritionList = nutritionDataArrangement(nutrientWeight, dailyIntake);
-  console.log(`THIS IS THE NUTRIENT LIST: ${nutrientList}`)
+  console.log(`THIS IS THE NUTRIENT LIST: ${nutritionList}`);
   return nutritionList;
 }
 
 function nutritionDataArrangement(nutrientWeight, dailyIntake) {
-  console.log('This is the nutrientWeight object');
+  console.log("This is the nutrientWeight object");
   console.log(nutrientWeight);
-  const nutrientObject = {};
-  Object.entries(dailyIntake).forEach((key) => {
-    console.log(`This is the % daily intake: ${key[1].label} ${key[1].quantity.toFixed(1)} ${key[1].unit}`);
-  })
-  
+  const nutrientListArray = [];
+  let nutritionObject = {};
+  const percentageArray = [];
+
+  console.log(`This is the weight: \n\n`);
   Object.entries(nutrientWeight).forEach((nutrient) => {
-    console.log(`This is the nutrient label: ${nutrient[1].label}`);
-    console.log(`This is the nutrient quantity: ${nutrient[1].quantity.toFixed(1)}`);
-    console.log(`This is the nutrient unit: ${nutrient[1].unit}`);
-    // nutrientObject.push({nutrient: {"label": `${nutrient.label}`, "quantity": `${nutrient.quantity} ${nutrient.unit}`}})
+    nutritionObject = {
+      name: nutrient[1].label,
+      quantity: nutrient[1].quantity.toFixed(1),
+      unit: nutrient[1].unit,
+    };
+    nutrientListArray.push(nutritionObject);
+    console.log(nutritionObject);
   });
-  console.log(nutrientObject);
 
-  
+  console.log(`\n\n This is the % daily intake: \n\n`);
+  Object.entries(dailyIntake).forEach((nutrient) => {
+    percentageObject = {
+      name: nutrient[1].label,
+      percentage: `${nutrient[1].quantity.toFixed(1)}%`,
+    };
+    console.log(percentageObject);
+    percentageArray.push(percentageObject);
+  });
+  //==============================================================================================================================
 
+  // trying to merge objects with same keys together, though think should do it for each individual object
+  // rather than the array of objects..
 
-  return nutrientObject;
+  //==============================================================================================================================
+
+  // const mergedObjects = [...nutrientListArray, ...percentageArray];
+  // const combining = nutrientListArray.forEach((item) => {
+  //   percentageArray.forEach((percentage) => {
+  //     const merged = {
+  //       ...item,
+  //       ...percentage
+  //     }
+  //     console.log(merged);
+  //     mergedObjects.push(merged);
+  //   });
+  // })
+
+  // console.log(nutrientListArray, percentageArray);
+  console.log("\n\nBelow is the merged object: \n");
+  // console.log(mergedObjects);
+  const merged = Object.assign({}, nutrientListArray, percentageArray);
+  console.log(merged);
+
+  return merged;
 }
 
 function ingredientBulletDisplay(ingredients) {
@@ -128,40 +161,30 @@ function ingredientBulletDisplay(ingredients) {
 
 function formatHTMLIngredients(items) {
   let htmlOutput = ["<ul>"];
-  items.forEach(item => {
-    htmlOutput.push(`<li class='mb-3'>${item}</li>\n`)
-  })
+  items.forEach((item) => {
+    htmlOutput.push(`<li class='mb-3'>${item}</li>\n`);
+  });
   htmlOutput.push("</ul>");
-  return htmlOutput.join('');
+  return htmlOutput.join("");
 }
 
 function displayIngredients(ingredients) {
-  const ingredientArray = []
+  const ingredientArray = [];
   ingredients.forEach((item) => {
     ingredientArray.push(item.text);
-  })
+  });
   return ingredientArray;
 }
 
-function createClickEvent(node, recipe) {
-  console.log(`This is the node: ${node}`);
-  node.addEventListener("click", () => {
-    console.log("i got clicked, THIS IS THE CREATE CLICK EVENT");
-    buildCardView(recipe);
-  });
-}
-
 function addClickEventListener(data) {
-
-  const recipeCard = document.querySelector(".clickMe");
-  console.log(`Does this get printed? ${recipeCard}`);
-  console.log(data.hits[0]);
-  let recipe = data.hits[0].recipe
-  createClickEvent(recipeCard, recipe);
-
-  // recipeCard.forEach((cardObject) => {
-  //   createClickEvent(cardObject, recipe);
-  // })
+  const recipeCard = document.querySelectorAll(".clickMe");
+  const recipes = data.hits;
+  const accessEachNodeObjectInArray = [...recipeCard].forEach((node, index) => {
+    node.addEventListener('click', () => {
+      console.log(`An Event listener was added for ${index}`);
+      buildCardView(recipes[index].recipe);
+    });
+  });
 }
 
 function createCard(recipe, id) {
@@ -184,14 +207,9 @@ function createCard(recipe, id) {
         <a href=${recipe.url} class="card-title text-primary mt-1"><h2>${recipe.label}</h2></a>
       </div>  
     </div>`;
-    // let clickAdder = document.getElementById(`${id}`);
-    
-// function calls go back here.......
 
-mealList.appendChild(card);
-
+  mealList.appendChild(card);
 }
-
 
 function badgeWordFunction(diet) {
   let dietaryDisplay = "";
@@ -219,13 +237,7 @@ function useApiData(data) {
   let html = "";
   if (data.hits.length > 0) {
     data.hits.forEach(({ recipe }, index) => {
-      createCard({recipe}.recipe, `recipe${index}`);
-
-      // addClickEventListener({recipe}.recipe, `recipe${index}`)
-
-
-      // .then(createClickEvent(clickAdder, recipe))
-      // .then(mealList.appendChild(card));
+      createCard({ recipe }.recipe, `recipe${index}`);
     });
     mealList.classList.remove("notFound");
   } else {

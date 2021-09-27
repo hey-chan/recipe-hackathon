@@ -30,7 +30,7 @@ body {
   background: rgba(0, 0, 0, 0.406);
   backdrop-filter: blur(3px);
   width: 100vw;
-  height: 250px;
+  height: 12vw;
 }
 
 /* For mobile view */
